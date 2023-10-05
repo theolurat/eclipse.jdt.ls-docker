@@ -1,21 +1,26 @@
 ARG ECLIPSE_JDT_PATH=$WORKDIR/eclipse.jdt.ls
 ARG ECLIPSE_JDT_TARGET=$ECLIPSE_JDT_PATH/org.eclipse.jdt.ls.product/target/repository
 
-FROM openjdk:17-jdk-slim-buster AS build
+FROM openjdk:17-jdk-buster AS build
 
 RUN apt-get update
-RUN apt-get install -y maven git
+RUN apt-get install -y maven git xmlstarlet
 
 ARG ECLIPSE_JDT_PATH
 ARG ECLIPSE_JDT_TARGET
 
-ARG TAG=
-RUN git clone --branch $TAG https://github.com/eclipse-jdtls/eclipse.jdt.ls $ECLIPSE_JDT_PATH
+RUN git clone https://github.com/eclipse-jdtls/eclipse.jdt.ls $ECLIPSE_JDT_PATH
 
 WORKDIR $ECLIPSE_JDT_PATH
-RUN $ECLIPSE_JDT_PATH/mvnw clean verify -DskipTests=true -o debug
 
-FROM openjdk:17-jdk-slim-buster
+# # Use xmlstarlet to remove the plugin block
+# RUN xmlstarlet ed --inplace \
+#     -d "//plugins/plugin[artifactId='tycho-maven-plugin']" \
+#     ./pom.xml
+
+RUN ./mvnw clean verify -DskipTests=true
+
+FROM openjdk:17-jdk-buster
 
 RUN apt-get update && apt-get upgrade -y
 

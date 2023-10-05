@@ -1,4 +1,4 @@
-Dockerfile for building a Docker container of [eclipse/eclipse.jdt.ls](https://github.com/eclipse/eclipse.jdt.ls)
+Dockerfile for building a Docker container of [eclipse/eclipse.jdt.ls](https://github.com/eclipse-jdtls/eclipse.jdt.ls)
 
 Fork of https://github.com/Kaylebor/eclipse.jdt.ls-docker
 
@@ -9,7 +9,7 @@ Running on OpenJDK 17
 
 Example run configuration:
 
-        docker build -t -v /path/to/eclipse/workspace:/eclipse-workspace eclipse.jdt.ls-docker .
+        docker build -t eclipse.jdt.ls-docker .
 
         docker run -p 3000:3000 eclipse.jdt.ls-docker
 
