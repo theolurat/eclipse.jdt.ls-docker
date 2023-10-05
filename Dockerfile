@@ -4,13 +4,13 @@ ARG ECLIPSE_JDT_TARGET=$ECLIPSE_JDT_PATH/org.eclipse.jdt.ls.product/target/repos
 FROM openjdk:17-jdk-slim-buster AS build
 
 RUN apt-get update
-RUN apt-get install -y maven
+RUN apt-get install -y maven git
 
 ARG ECLIPSE_JDT_PATH
 ARG ECLIPSE_JDT_TARGET
 
 ARG TAG=
-RUN git clone --branch $TAG https://github.com/eclipse/eclipse.jdt.ls $ECLIPSE_JDT_PATH
+RUN git clone --branch $TAG https://github.com/eclipse-jdtls/eclipse.jdt.ls $ECLIPSE_JDT_PATH
 
 WORKDIR $ECLIPSE_JDT_PATH
 RUN $ECLIPSE_JDT_PATH/mvnw clean verify -DskipTests=true -o debug
