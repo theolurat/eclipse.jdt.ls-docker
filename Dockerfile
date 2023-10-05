@@ -1,7 +1,7 @@
 ARG ECLIPSE_JDT_PATH=$WORKDIR/eclipse.jdt.ls
 ARG ECLIPSE_JDT_TARGET=$ECLIPSE_JDT_PATH/org.eclipse.jdt.ls.product/target/repository
 
-FROM openjdk:11 AS build
+FROM openjdk:17 AS build
 
 RUN apt-get update
 RUN apt-get install -y maven
@@ -13,9 +13,9 @@ ARG TAG=
 RUN git clone --branch $TAG https://github.com/eclipse/eclipse.jdt.ls $ECLIPSE_JDT_PATH
 
 WORKDIR $ECLIPSE_JDT_PATH
-RUN $ECLIPSE_JDT_PATH/mvnw clean verify
+RUN $ECLIPSE_JDT_PATH/mvnw clean verify -DskipTests=true
 
-FROM openjdk:11
+FROM openjdk:17
 
 RUN apt-get update && apt-get upgrade -y
 
