@@ -7,7 +7,10 @@ TO UPDATE
 
 Running on OpenJDK 17
 
-TO UPDATE
 Example run configuration:
 
-        docker run //
+        docker build -t eclipse.jdt.ls-docker .
+
+        docker run -p 3000:3000 eclipse.jdt.ls-docker
+
+        docker ps
