@@ -2,8 +2,7 @@ Dockerfile for building a Docker container of [eclipse/eclipse.jdt.ls](https://g
 
 Fork of https://github.com/Kaylebor/eclipse.jdt.ls-docker
 
-TO UPDATE
-[Built images are available here](https://hub.docker.com/r/kaylebor/eclipse.jdt.ls)
+[Built images are available here](https://hub.docker.com/r/theolrt/eclipse.jdt.ls)
 
 Running on OpenJDK 17
 
