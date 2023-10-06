@@ -15,3 +15,5 @@ java \
 	-jar $launcher_file_name \
 	-configuration ./config_linux \
 	-data $ECLIPSE_WORKSPACE \
+	-DCLIENT_HOST=127.0.0.1 \
+	-DCLIENT_PORT=5036 \
