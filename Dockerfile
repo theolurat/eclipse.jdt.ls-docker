@@ -13,11 +13,6 @@ RUN git clone https://github.com/eclipse-jdtls/eclipse.jdt.ls $ECLIPSE_JDT_PATH
 
 WORKDIR $ECLIPSE_JDT_PATH
 
-# # Use xmlstarlet to remove the plugin block
-# RUN xmlstarlet ed --inplace \
-#     -d "//plugins/plugin[artifactId='tycho-maven-plugin']" \
-#     ./pom.xml
-
 RUN ./mvnw clean verify -DskipTests=true
 
 FROM openjdk:17-jdk-buster
