@@ -9,8 +9,4 @@ Running on OpenJDK 17
 
 Example run configuration:
 
-        docker build -t eclipse.jdt.ls-docker .
-
-        docker run -p 3000:3000 eclipse.jdt.ls-docker
-
-        docker ps
+        docker run -d theolrt/eclipse.jdt.ls:1.0
