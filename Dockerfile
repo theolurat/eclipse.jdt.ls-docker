@@ -30,4 +30,6 @@ RUN mkdir -p $ECLIPSE_WORKSPACE
 WORKDIR $ECLIPSE_JDT_TARGET
 COPY start.sh start.sh
 
+EXPOSE 5036
+
 CMD ["/bin/bash", "start.sh"]
