@@ -8,4 +8,4 @@ Running on OpenJDK 17
 
 Example run configuration:
 
-        docker run -d theolrt/eclipse.jdt.ls:<version>
+        docker run -d -p 5036:5036 theolrt/eclipse.jdt.ls:<version>
